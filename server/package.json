@@ -1,0 +1,9 @@
+{
+  "name": "youmall",
+  "version": "1.0.0",
+  "description": "Projeto de ecommerce para ongs e instituiçoes beneficentes possuirem uma forma de divulgar melhor seus bazares",
+  "main": "server.js",
+  "authors": ["Ariel Sales de Oliveira Sobreira", "Matheus Maximiano de Melo Vieira"],
+  "repository": "https://github.com/youmallservice/app",
+  "license": "MIT"
+}
