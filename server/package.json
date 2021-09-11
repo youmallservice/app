@@ -12,10 +12,15 @@
   "scripts": {
     "build": "rm -rf build && tsc",
     "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/server.ts",
-    "start": "rm -rf build && tsc && node build/server.js",
+    "doc": "apidoc -i src/app/controllers -o doc",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
+    "start": "rm -rf build && tsc && node build/server.js",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
+  },
+  "apidoc": {
+    "title": "Documentação do Server Youmall",
+    "url": "http://localhost:3333"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -31,6 +36,7 @@
     "@types/yup": "^0.29.13",
     "@typescript-eslint/eslint-plugin": "^4.31.0",
     "@typescript-eslint/parser": "^4.31.0",
+    "apidoc": "^0.29.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^8.3.0",
