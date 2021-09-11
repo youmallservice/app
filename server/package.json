@@ -3,7 +3,42 @@
   "version": "1.0.0",
   "description": "Projeto de ecommerce para ongs e instituiçoes beneficentes possuirem uma forma de divulgar melhor seus bazares",
   "main": "server.js",
-  "authors": ["Ariel Sales de Oliveira Sobreira", "Matheus Maximiano de Melo Vieira"],
+  "authors": [
+    "Ariel Sales de Oliveira Sobreira",
+    "Matheus Maximiano de Melo Vieira"
+  ],
   "repository": "https://github.com/youmallservice/app",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "build": "rm -rf build && tsc",
+    "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/server.ts",
+    "start": "rm -rf build && tsc && node build/server.js",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "yup": "^0.32.9"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.13",
+    "@types/yup": "^0.29.13",
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@typescript-eslint/parser": "^4.31.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.4.0",
+    "ts-node": "^10.2.1",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.4.3"
+  }
 }
