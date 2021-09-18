@@ -1,9 +1,13 @@
-import { ErrorRequestHandler } from 'express';
+import { ErrorRequestHandler, Request, Response } from 'express';
 import { ValidationError } from 'yup';
 
 type IValidationErrors = Record<string, Array<string> | string | undefined>;
 
-const errorHandler: ErrorRequestHandler = (error, req, res) => {
+const errorHandler: ErrorRequestHandler = (
+  error,
+  req: Request,
+  res: Response
+) => {
   if (error instanceof ValidationError) {
     const description: IValidationErrors = {
       path: error.path,
