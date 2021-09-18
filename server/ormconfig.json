@@ -11,11 +11,11 @@
     "dropSchema": false,
     "synchronize": false,
     "logging": false,
-    "entities": ["src/app/models/*.ts"],
-    "migrations": ["src/database/migrations/*.ts", "src/database/seeds/*.ts"],
+    "entities": ["build/app/models/*.js"],
+    "migrations": ["build/database/migrations/*.js", "build/database/seeds/*.js"],
     "cli": {
-      "entitiesDir": "src/app/models",
-      "migrationsDir": "src/database/migrations"
+      "entitiesDir": "build/app/models",
+      "migrationsDir": "build/database/migrations"
     }
   },
   {
@@ -38,7 +38,7 @@
     }
   },
   {
-    "name": "test",
+    "name": "development-frontend",
     "type": "postgres",
     "host": "localhost",
     "port": 5432,
@@ -49,11 +49,11 @@
     "dropSchema": false,
     "synchronize": false,
     "logging": false,
-    "entities": ["src/app/models/*.ts"],
-    "migrations": ["src/database/migrations/*.ts", "src/database/seeds/*.ts"],
+    "entities": ["build/app/models/*.js"],
+    "migrations": ["build/database/migrations/*.js", "build/database/seeds/*.js"],
     "cli": {
-      "entitiesDir": "src/app/models",
-      "migrationsDir": "src/database/migrations"
+      "entitiesDir": "build/app/models",
+      "migrationsDir": "build/database/migrations"
     }
   }
 ]
