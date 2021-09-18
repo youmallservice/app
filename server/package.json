@@ -12,10 +12,10 @@
   "scripts": {
     "build": "tsc",
     "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/server.ts",
-    "doc": "apidoc -i src/app/controllers -o doc",
+    "doc": "apidoc -i src -o doc",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
-    "start": "tsc && node build/server.js",
+    "start": "node build/server.js",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "apidoc": {
