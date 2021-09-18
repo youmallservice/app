@@ -1,8 +1,11 @@
 import express from 'express';
 import cors from 'cors';
 
+import 'reflect-metadata';
 import routes from './routes';
 import errorHandler from './errors/handler';
+
+import './database/connection';
 
 class App {
   public server: express.Application;

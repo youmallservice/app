@@ -24,6 +24,7 @@ module.exports = {
     'class-methods-use-this': 'off',
     'no-console': 'error',
     '@typescript-eslint/explicit-function-return-type': ['error'],
+    'import/prefer-default-export': 'off',
     '@typescript-eslint/typedef': [
       'error',
       {
