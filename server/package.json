@@ -20,7 +20,7 @@
   },
   "apidoc": {
     "title": "Documentação do Server Youmall",
-    "url": "http://localhost:3333"
+    "url": "http://localhost:3333/api/v1"
   },
   "dependencies": {
     "cors": "^2.8.5",

@@ -9,10 +9,10 @@ import routes from './routes';
 import errorHandler from './errors/handler';
 import './database/connection';
 
+import { isDevelopment } from './utils/environment';
+
 class App {
   public server: express.Application;
-
-  private readonly KEY_DEVOLPMENT = 'development';
 
   constructor() {
     this.server = express();
@@ -29,9 +29,7 @@ class App {
   }
 
   private accessStaticFiles(): void {
-    const { NODE_ENV } = process.env;
-
-    if (NODE_ENV && NODE_ENV.includes(this.KEY_DEVOLPMENT)) {
+    if (isDevelopment()) {
       this.server.use('/docs', express.static(resolve(__dirname, '..', 'doc')));
     }
 
@@ -39,7 +37,7 @@ class App {
   }
 
   private routes(): void {
-    this.server.use(routes);
+    this.server.use('/api/v1/', routes);
   }
 
   private handleExceptionErrors(): void {

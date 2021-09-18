@@ -33,6 +33,7 @@ module.exports = {
         variableDeclaration: true,
       },
     ],
+    '@typescript-eslint/no-inferrable-types': 'off',
     'import/extensions': [
       'error',
       'ignorePackages',
