@@ -1,0 +1,59 @@
+[
+  {
+    "name": "production",
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "production",
+    "password": "production",
+    "database": "youmall",
+    "schema": "public",
+    "dropSchema": false,
+    "synchronize": false,
+    "logging": false,
+    "entities": ["src/app/models/*.ts"],
+    "migrations": ["src/database/migrations/*.ts", "src/database/seeds/*.ts"],
+    "cli": {
+      "entitiesDir": "src/app/models",
+      "migrationsDir": "src/database/migrations"
+    }
+  },
+  {
+    "name": "development",
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "development",
+    "password": "development",
+    "database": "youmall",
+    "schema": "public",
+    "dropSchema": false,
+    "synchronize": false,
+    "logging": false,
+    "entities": ["src/app/models/*.ts"],
+    "migrations": ["src/database/migrations/*.ts", "src/database/seeds/*.ts"],
+    "cli": {
+      "entitiesDir": "src/app/models",
+      "migrationsDir": "src/database/migrations"
+    }
+  },
+  {
+    "name": "test",
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "test",
+    "password": "test",
+    "database": "youmall",
+    "schema": "public",
+    "dropSchema": false,
+    "synchronize": false,
+    "logging": false,
+    "entities": ["src/app/models/*.ts"],
+    "migrations": ["src/database/migrations/*.ts", "src/database/seeds/*.ts"],
+    "cli": {
+      "entitiesDir": "src/app/models",
+      "migrationsDir": "src/database/migrations"
+    }
+  }
+]
