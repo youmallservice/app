@@ -12,7 +12,7 @@ class Database {
         process.env.NODE_ENV as string
       );
 
-      connection.runMigrations();
+      await connection.runMigrations();
     } catch (err) {
       // eslint-disable-next-line
       console.log('Server stopped due to database problems.');

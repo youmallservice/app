@@ -13,6 +13,6 @@ server.listen(PORT, () => {
 
   if (isDevelopment()) {
     // eslint-disable-next-line
-    console.log(`Documentation is running in ${URL}:${PORT}/docs/index.html`);
+    console.log(`Documentation in ${URL}:${PORT}/docs/index.html`);
   }
 });
