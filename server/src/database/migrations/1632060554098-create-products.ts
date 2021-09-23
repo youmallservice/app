@@ -47,7 +47,7 @@ export class createProducts1632060554098 implements MigrationInterface {
           {
             name: 'quantity_views',
             type: 'integer',
-            isNullable: true,
+            isNullable: false,
             default: 0,
           },
           {

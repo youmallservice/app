@@ -64,6 +64,7 @@ export class createUsers1632012853703 implements MigrationInterface {
             type: 'varchar',
             length: '50',
             isNullable: true,
+            default: null,
           },
           {
             name: 'street',
