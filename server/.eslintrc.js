@@ -23,6 +23,7 @@ module.exports = {
     'prettier/prettier': 'error',
     'class-methods-use-this': 'off',
     'no-console': 'error',
+    camelcase: 'off',
     '@typescript-eslint/explicit-function-return-type': ['error'],
     'import/prefer-default-export': 'off',
     '@typescript-eslint/typedef': [
