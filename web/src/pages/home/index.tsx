@@ -8,8 +8,10 @@ export default function HomePage() {
     return (
         <>
             <Nav />
-            <Caroussel />
-            <Card />
+            <div id="page-content">
+              {/* <Caroussel /> */}
+              <Card />
+            </div>
         </>
     )
 }

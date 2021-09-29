@@ -6,7 +6,7 @@ export default function ProductCard() {
 
       <div className="col-6 col-sm-2 col-md-3 col-lg-3 item">
         <div className="product-image">
-          <a className="grid-view-item__link" href="http://localhost:3000/">
+          <a className="grid-view-item__link" href="#">
             <img
               className="grid-view-item__image hover variantImg"
               src={Photo}
