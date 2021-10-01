@@ -1,11 +1,14 @@
 import React from 'react';
 
-import './App.css';
+
+import './App.css'
+import Home from '../src/pages/home/index';
 
 function App() {
+
   return (
     <div className="App">
-      <h1>YouMall</h1>
+      <Home />
     </div>
   );
 }
