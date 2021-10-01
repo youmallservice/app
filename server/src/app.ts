@@ -4,6 +4,7 @@ import { resolve } from 'path';
 
 import 'reflect-metadata';
 import 'dotenv/config';
+import 'express-async-errors';
 
 import routes from './routes';
 import errorHandler from './errors/handler';
