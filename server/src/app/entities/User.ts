@@ -1,5 +1,6 @@
 /* eslint-disable */
-import { Entity, Column, OneToMany, JoinColumn } from 'typeorm';
+import { Entity, Column, OneToMany, JoinColumn, BeforeInsert } from 'typeorm';
+import bcrypt from 'bcrypt';
 
 import AbstractModel from './AbstractModel';
 import Product from './Product';
@@ -13,7 +14,7 @@ export default class User extends AbstractModel {
   @Column({ type: 'varchar', length: 50, unique: true, nullable: false })
   public email: string;
 
-  @Column({ type: 'varchar', length: 50, nullable: false })
+  @Column({ type: 'varchar', length: 100, nullable: false })
   public password: string;
 
   @Column({ type: 'varchar', length: 14, nullable: false })
@@ -49,15 +50,24 @@ export default class User extends AbstractModel {
   @Column({ type: 'varchar', length: 8, nullable: false })
   public cep: string;
 
-  @OneToMany(type => Product, (product) => product.user, {
+  @OneToMany((type) => Product, (product) => product.user, {
     cascade: ['insert', 'update'],
   })
   @JoinColumn({ name: 'owner_id' })
   public products: Array<Product>;
 
-  @OneToMany(type => Product, (product) => product.user, {
+  @OneToMany((type) => Product, (product) => product.user, {
     cascade: ['insert', 'update'],
   })
   @JoinColumn({ name: 'customer_id' })
   public orders: Array<Order>;
+
+  @BeforeInsert()
+  public async encryptPassword(): Promise<void> {
+    this.password = await bcrypt.hash(this.password, 10);
+  }
+
+  public async checkPassword(password: string): Promise<boolean> {
+    return await bcrypt.compare(password, this.password);
+  }
 }
