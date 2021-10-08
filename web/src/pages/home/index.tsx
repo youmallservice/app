@@ -2,14 +2,17 @@ import React from 'react';
 
 import Card from '../../Components/cards/index'
 import Nav from '../../Components/navBar/index'
-import Caroussel from '../../Components/caroussel/index'
+import Caroussel from '../../Components/caroussel'
+
+import Photo from '../../assets/images/slideshow-banners/home2-default-banner1.jpg'
+import Photo2 from '../../assets/images/slideshow-banners/home2-default-banner2.jpg'
 
 export default function HomePage() {
     return (
         <>
             <Nav />
             <div id="page-content">
-              {/* <Caroussel /> */}
+              <Caroussel />
                 <div className="product-rows section">
                   <div className="container">
                     <div className="row">
