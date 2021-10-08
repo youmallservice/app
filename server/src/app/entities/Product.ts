@@ -36,12 +36,6 @@ export default class Product extends AbstractModel {
   @Column({ type: 'varchar', length: 50, nullable: true, default: null })
   public thumbnail_url: string;
 
-  // @Column({ type: 'integer', nullable: false })
-  // public owner_id: number;
-
-  // @Column({ type: 'integer', nullable: false })
-  // public type_id: number;
-
   @ManyToOne(type => User, (user) => user.products)
   @JoinColumn({ name: 'owner_id' })
   public user: User;

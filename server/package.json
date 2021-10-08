@@ -12,7 +12,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/server.ts",
-    "doc": "apidoc -i src -o doc",
+    "doc": "apidoc -i src/routes -o doc",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "start": "node build/server.js",
@@ -23,19 +23,23 @@
     "url": "http://localhost:3333/api/v1"
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
+    "jsonwebtoken": "^8.5.1",
     "pg": "^8.7.1",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.37",
     "yup": "^0.32.9"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.12",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.13",
+    "@types/jsonwebtoken": "^8.5.5",
     "@types/node": "^16.9.1",
     "@types/yup": "^0.29.13",
     "@typescript-eslint/eslint-plugin": "^4.31.0",

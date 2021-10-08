@@ -31,7 +31,7 @@ export class createUsers1632012853703 implements MigrationInterface {
           {
             name: 'password',
             type: 'varchar',
-            length: '50',
+            length: '100',
             isNullable: false,
           },
           {
