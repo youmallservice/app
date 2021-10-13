@@ -4,6 +4,8 @@ import { RiShoppingCartLine } from "react-icons/ri";
 import { BiSearchAlt } from "react-icons/bi";
 import {VscChromeClose} from "react-icons/vsc"
 
+import './styles.css'
+
 import Logo from "../../assets/images/logo.png";
 
 export default function NavBar() {

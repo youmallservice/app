@@ -1,6 +1,8 @@
 import React from "react";
 import Photo from '../../assets/images/product-images/product_image23.jpg';
 
+import './styles.css'
+
 export default function ProductCard() {
   return (
     <div className="col-6 col-sm-2 col-md-3 col-lg-3 item">

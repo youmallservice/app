@@ -1,9 +1,10 @@
 import React from 'react';
 
+import './styles.css'
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.min.css'
 import 'swiper/swiper.min.css'
-import './index.css'
 import Image from '../../assets/images/slideshow-banners/home2-default-banner1.jpg'
 import Image2 from '../../assets/images/slideshow-banners/home2-default-banner2.jpg'
 
