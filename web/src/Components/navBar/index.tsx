@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory, Link } from "react-router-dom";
 
 import { RiShoppingCartLine } from "react-icons/ri";
 import { BiSearchAlt } from "react-icons/bi";
@@ -9,6 +10,15 @@ import './styles.css'
 import Logo from "../../assets/images/logo.png";
 
 export default function NavBar() {
+
+  const history = useHistory();
+
+  function handleShop(){
+    history.push("/loja")
+  }
+  function handleHome(){
+    history.push("/")
+  }
 
   return (
     <div>
@@ -66,13 +76,13 @@ export default function NavBar() {
               <nav className="grid__item" id="AccessibleNav">
                 <ul id="siteNav" className="site-nav medium center hidearrow">
                   <li className="lvl1 parent megamenu">
-                    <a href="#">
-                      Home <i className="anm anm-angle-down-l"></i>
+                    <a href="/">
+                      Home
                     </a>
                   </li>
                   <li className="lvl1 parent megamenu">
-                    <a href="#">
-                      Loja <i className="anm anm-angle-down-l"></i>
+                    <a href="/loja">
+                      Loja
                     </a>
                   </li>
                   <li className="lvl1 parent dropdown">

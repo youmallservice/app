@@ -1,9 +1,9 @@
 import React from 'react';
-
+import { Router} from 'react-router-dom'
+import Routes from './routes'
 
 import './App.css'
-import Home from '../src/pages/home/index';
-import Shop from '../src/pages/shop/index';
+import history from './history'
 
 import Nav from  './Components/navBar'
 import Footer from  './Components/footer'
@@ -15,7 +15,9 @@ function App() {
 
       <Nav/>
       <div className="page-content">
-        <Shop />
+        <Router history = {history}>
+          <Routes/>
+        </Router>
       </div>
       <Footer />
     </div>
