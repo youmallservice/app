@@ -25,7 +25,7 @@ class App {
   }
 
   private middlewares(): void {
-    this.server.use(cors());
+    this.server.use(cors({}));
     this.server.use(express.json());
   }
 

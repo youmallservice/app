@@ -1,4 +1,4 @@
-import * as Yup from 'yup';
+import { StringSchema } from 'yup';
 import { ObjectShape } from 'yup/lib/object';
 
 export interface User {
@@ -19,18 +19,25 @@ export interface User {
 }
 
 export interface UserYupSchema extends ObjectShape {
-  name: Yup.StringSchema;
-  lastName: Yup.StringSchema;
-  email: Yup.StringSchema;
-  password: Yup.StringSchema;
-  confirmPassword: Yup.StringSchema;
-  document: Yup.StringSchema;
-  phone_1: Yup.StringSchema;
-  phone_2: Yup.StringSchema;
-  street: Yup.StringSchema;
-  neighborhood: Yup.StringSchema;
-  city: Yup.StringSchema;
-  state: Yup.StringSchema;
-  number_house: Yup.StringSchema;
-  cep: Yup.StringSchema;
+  name: StringSchema;
+  lastName: StringSchema;
+  email: StringSchema;
+  password: StringSchema;
+  confirmPassword: StringSchema;
+  document: StringSchema;
+  phone_1: StringSchema;
+  phone_2: StringSchema;
+  street: StringSchema;
+  neighborhood: StringSchema;
+  city: StringSchema;
+  state: StringSchema;
+  number_house: StringSchema;
+  cep: StringSchema;
+}
+
+export interface UserToken {
+  id: number;
+  name: string;
+  email: string;
+  isAdmin: boolean;
 }

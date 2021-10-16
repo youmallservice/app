@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 
 import UserController from '../app/controllers/UsersController';
+import SessionController from '../app/controllers/SessionController';
 
 const routes: Router = Router();
 
@@ -108,5 +109,61 @@ routes.get(
  *  }
  */
 routes.post('/users/signup', UserController.store);
+
+/**
+ * @api {post} /sessions 03.Login
+ * @apiVersion  1.0.0
+ * @apiGroup General
+ * @apiDescription Rota de autenticação dos usuários.
+ *
+ * @apiParam (Body) {String} email Email do usuário
+ * @apiParam (Body) {String} password Senha do usuário
+ *
+ * @apiExample {json} Exemplo de requisição:
+ *  {
+ *      "email": "fulanodetal@email.com",
+ *      "password": "passwordExample"
+ *  }
+ *
+ * @apiSuccess (201) {String} message Mensagem de sucesso.
+ * @apiSuccess (201) {Object} user Objeto contendo informações do usuário
+ * @apiSuccess (201) {Integer} user.id Número identificador do usuário.
+ * @apiSuccess (201) {String} user.name Nome do usuário autenticado
+ * @apiSuccess (201) {String} user.email Email do usuário autenticado
+ * @apiSuccess (201) {Boolean} user.isAdmin Flag que determina o nível administrador do usuário
+ * @apiSuccess (201) {String} token Token de autenticação
+ *
+ * @apiSuccessExample Success-Response:
+ *  HTTP/1.1 201 OK
+ *  {
+ *      "message": "Session created with sucessfull."
+ *      "user": {
+ *          "id": 1,
+ *          "name": "Fulano de Tal da Silva",
+ *          "email": "fulanodetal@email.com",
+ *          "isAdmin": false,
+ *      }
+ *      "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+ *  }
+ * @apiErrorExample {json} Campos inválidos - Error-Response:
+ *  HTTP/1.1 400 Error
+ *  {
+ *      "error": "Validation Fails.",
+ *      "description": {
+ *        "path": "password",
+ *        "errors": [
+ *          "A senha é obrigatória.",
+ *          "A senha deve ter no mínimo 8 carateres."
+ *        ]
+ *      }
+ *  }
+ * @apiErrorExample {json} Email, senha ou permissão inválidos - Error-Response:
+ *  HTTP/1.1 400 Error
+ *  {
+ *      "error": "Fail loggin."
+ *      "message": "Email or password invalid."
+ *  }
+ */
+routes.post('/sessions', SessionController.store);
 
 export default routes;
