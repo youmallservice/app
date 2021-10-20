@@ -28,19 +28,21 @@ export default function LoginRegister(){
   const [name, setName] = useState("")
   const [lastName, setLastName] = useState("")
   const [email, setEmail] = useState("")
+  const [emailRegister, setEmailRegister] = useState("")
   const [password, setPassword] = useState("")
+  const [passwordRegister, setPasswordRegister] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
   const [contact1, setContact1] = useState("")
   const [contact2, setContact2] = useState("0")
   const [birth, setBirth] = useState('');
   const [state, setState] = useState('')
-  const [zip, setZip] = useState('')
+  const [cep, setcep] = useState('')
   const [city, setCity] = useState('')
   const [address, setAddress] = useState('')
-  const [district, setDistrict] = useState('')
+  const [neighborhood, setNeighborhood] = useState('')
   const [complement, setComplement] = useState('')
   const [number, setNumber] = useState('')
-  const [cpf, setCpf] = useState('')
+  const [document, setDocument] = useState('')
 
   const [steps, setSteps] = useState(0)
   const toast = useToast();
@@ -65,6 +67,7 @@ export default function LoginRegister(){
         localStorage.setItem('@Youmall:token', JSON.stringify(token));
         history.push('/loja');
       }catch(error) {
+        console.log(error)
         toast({
           title: "Usuário ou senha inválido",
           status: "error",
@@ -83,15 +86,16 @@ export default function LoginRegister(){
     }
   }
 
-  function handleValidatePassword(){
-    if(password !== confirmPassword){
+  function handleValidatePassword(e: React.SyntheticEvent){
+    e.preventDefault();
+    if(passwordRegister !== confirmPassword){
       toast({
         title: "As senhas não correspondem",
         status: "error",
         duration: 5000,
         isClosable: true,
     })
-    } else if(password.length < 8){
+    } else if(passwordRegister.length < 8){
       toast({
         title: "A senha deve ter mais que 8 caracteres",
         status: "error",
@@ -104,29 +108,29 @@ export default function LoginRegister(){
   }
 
 
-  async function handleRegister(e: React.SyntheticEvent){
+  function handleRegister(e: React.SyntheticEvent){
     const baseUrl = '/users/signup';
     e.preventDefault()
 
     const body = {
       name,
       lastName,
-      email,
-      password,
+      emailRegister,
+      passwordRegister,
       confirmPassword,
-      cpf,
+      document,
       contact1,
       contact2,
       address,
-      district,
+      neighborhood,
       city,
       state,
       number,
-      zip
+      cep
     }
 
     try{
-      const response = await api.post(baseUrl, body);
+      const response = api.post('/users/signup', body);
       toast({
         title: "Conta criada",
         description: "Faça o login para acessar a sua conta",
@@ -135,7 +139,7 @@ export default function LoginRegister(){
         isClosable: true,
       })
     }catch(error){
-      console.log(error)
+      console.log(body)
       toast({
         title: "Não foi possível criar sua conta",
         status: "error",
@@ -202,11 +206,11 @@ export default function LoginRegister(){
                   <div className="form-group">
                     <FormControl className="InputForm" id="email" isRequired>
                       <FormLabel >Email</FormLabel>
-                      <Input type="email" name="customer[email]" placeholder="" id="CustomerEmail" value={email} className="" onChange={event => setEmail(event.target.value)}/>
+                      <Input type="email" name="customer[email]" placeholder="" id="CustomerEmail" value={emailRegister} className="" onChange={event => setEmailRegister(event.target.value)}/>
                     </FormControl>
-                    <FormControl className="InputForm" id="cpf" isRequired>
-                      <FormLabel>CPF</FormLabel>
-                      <Input type="text" name="customer[cpf]" placeholder="" id="Cpf" value={cpf} onChange={event => setCpf(event.target.value)}/>
+                    <FormControl className="InputForm" id="document" isRequired>
+                      <FormLabel>document</FormLabel>
+                      <Input type="text" name="customer[document]" placeholder="" id="document" value={document} onChange={event => setDocument(event.target.value)}/>
                     </FormControl>
                   </div>
                 </div>
@@ -226,7 +230,7 @@ export default function LoginRegister(){
                   <div className="form-group">
                     <FormControl className="InputForm" id="password" isRequired>
                       <FormLabel>Senha</FormLabel>
-                      <Input type="password" name="customer[password]" placeholder="" id="Password" value={password} onChange={event => setPassword(event.target.value)}/>
+                      <Input type="password" name="customer[password]" placeholder="" id="Password" value={passwordRegister} onChange={event => setPasswordRegister(event.target.value)}/>
                     </FormControl>
                     <FormControl className="InputForm" id="phone2" isRequired>
                       <FormLabel>Confirme a Senha</FormLabel>
@@ -289,9 +293,9 @@ export default function LoginRegister(){
                 </div>
                 <div className="col-12 col-sm-12 col-md-12 col-lg-12">
                   <div className="form-group">
-                    <FormControl className="InputForm" id="zip-code" isRequired>
+                    <FormControl className="InputForm" id="cep-code" isRequired>
                       <FormLabel >Cep</FormLabel>
-                      <Input type="text" name="customer[zipCode]" value={zip} placeholder="000000-000" id="ZipCode" onChange={event => setZip(event.target.value)}/>
+                      <Input type="text" name="customer[cepCode]" value={cep} placeholder="000000-000" id="cepCode" onChange={event => setcep(event.target.value)}/>
                     </FormControl>
                     <FormControl className="InputForm" id="city" isRequired>
                       <FormLabel>Cidade</FormLabel>
@@ -305,9 +309,9 @@ export default function LoginRegister(){
                       <FormLabel>Endereço</FormLabel>
                       <Input type="text" name="customer[address]" value={address} placeholder="" id="Address" onChange={event => setAddress(event.target.value)}/>
                     </FormControl>
-                    <FormControl className="InputForm" id="district" isRequired>
+                    <FormControl className="InputForm" id="neighborhood" isRequired>
                       <FormLabel>Bairro</FormLabel>
-                      <Input type="text" name="customer[district]" value={district} placeholder="" id="District" onChange={event => setDistrict(event.target.value)}/>
+                      <Input type="text" name="customer[neighborhood]" value={neighborhood} placeholder="" id="neighborhood" onChange={event => setNeighborhood(event.target.value)}/>
                     </FormControl>
                   </div>
                 </div>
@@ -315,7 +319,7 @@ export default function LoginRegister(){
                   <div className="form-group">
                     <FormControl className="InputForm" id="complement">
                       <FormLabel>Complemento</FormLabel>
-                      <Input type="password" name="customer[complement]" placeholder="" value={complement} id="Complement" onChange={event => setComplement(event.target.value)}/>
+                      <Input type="text" name="customer[complement]" placeholder="" value={complement} id="Complement" onChange={event => setComplement(event.target.value)}/>
                     </FormControl>
                     <FormControl className="InputForm" id="number" isRequired>
                       <FormLabel>Numero</FormLabel>
