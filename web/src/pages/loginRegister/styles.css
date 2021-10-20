@@ -20,12 +20,21 @@
 
 .form-group{
   display: flex;
-  flex-direction: row;
 }
 
 .inputForm{
+  width: 50%;
+}
+
+.stepsCreate{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   padding-left: 1rem;
-  padding-right: 1rem;
+}
+
+.css-1kxonj9{
+  padding-left:1rem
 }
 
 
