@@ -32,8 +32,8 @@ export default function LoginRegister(){
   const [password, setPassword] = useState("")
   const [passwordRegister, setPasswordRegister] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
-  const [contact1, setContact1] = useState("")
-  const [contact2, setContact2] = useState("0")
+  const [phone_1, setPhone_1] = useState("")
+  const [phone_2, setPhone_2] = useState("0")
   const [birth, setBirth] = useState('');
   const [state, setState] = useState('')
   const [cep, setcep] = useState('')
@@ -41,7 +41,7 @@ export default function LoginRegister(){
   const [address, setAddress] = useState('')
   const [neighborhood, setNeighborhood] = useState('')
   const [complement, setComplement] = useState('')
-  const [number, setNumber] = useState('')
+  const [number_house, setNumber_house] = useState('')
   const [document, setDocument] = useState('')
 
   const [steps, setSteps] = useState(0)
@@ -61,11 +61,18 @@ export default function LoginRegister(){
       };
 
       try{
+        console.log(body)
         const response = await api.post <Response>(baseUrl, body);
         const {user, token} = response.data;
         localStorage.setItem('@Youmall:user', JSON.stringify(user));
         localStorage.setItem('@Youmall:token', JSON.stringify(token));
         history.push('/loja');
+        toast({
+          title: `Bem vindo ${name}`,
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+        })
       }catch(error) {
         console.log(error)
         toast({
@@ -114,19 +121,19 @@ export default function LoginRegister(){
 
     const body = {
       name,
+      cep,
       lastName,
-      emailRegister,
-      passwordRegister,
       confirmPassword,
       document,
-      contact1,
-      contact2,
-      address,
+      phone_1,
+      phone_2,
       neighborhood,
       city,
       state,
-      number,
-      cep
+      number_house,
+      email: emailRegister,
+      street: address,
+      password: passwordRegister,
     }
 
     try{
@@ -139,7 +146,7 @@ export default function LoginRegister(){
         isClosable: true,
       })
     }catch(error){
-      console.log(body)
+      console.log(error)
       toast({
         title: "Não foi possível criar sua conta",
         status: "error",
@@ -218,11 +225,11 @@ export default function LoginRegister(){
                   <div className="form-group">
                     <FormControl className="InputForm" id="phone1" isRequired>
                       <FormLabel>Contato 1</FormLabel>
-                      <Input type="text" name="customer[phone1]" placeholder="" id="Phone1" value={contact1} onChange={event => setContact1(event.target.value)}/>
+                      <Input type="text" name="customer[phone1]" placeholder="" id="Phone1" value={phone_1} onChange={event => setPhone_1(event.target.value)}/>
                     </FormControl>
                     <FormControl className="InputForm" id="phone2">
                       <FormLabel>Contato 2</FormLabel>
-                      <Input type="text" name="customer[phone2]" placeholder="" id="phone2" value={contact2} onChange={event => setContact2(event.target.value)}/>
+                      <Input type="text" name="customer[phone2]" placeholder="" id="phone2" value={phone_2} onChange={event => setPhone_2(event.target.value)}/>
                     </FormControl>
                   </div>
                 </div>
@@ -321,9 +328,9 @@ export default function LoginRegister(){
                       <FormLabel>Complemento</FormLabel>
                       <Input type="text" name="customer[complement]" placeholder="" value={complement} id="Complement" onChange={event => setComplement(event.target.value)}/>
                     </FormControl>
-                    <FormControl className="InputForm" id="number" isRequired>
+                    <FormControl className="InputForm" id="number_house" isRequired>
                       <FormLabel>Numero</FormLabel>
-                      <Input type="text" name="customer[number]" placeholder="" value={number} id="Number" onChange={event => setNumber(event.target.value)}/>
+                      <Input type="text" name="customer[number_house]" placeholder="" value={number_house} id="number_house" onChange={event => setNumber_house(event.target.value)}/>
                     </FormControl>
                   </div>
                 </div>

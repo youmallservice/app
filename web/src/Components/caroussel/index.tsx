@@ -12,7 +12,7 @@ export default function Caroussel() {
   return (
     <div>
       <Swiper
-        navigation
+        navigation={true}
         autoplay
       >
         <SwiperSlide>
